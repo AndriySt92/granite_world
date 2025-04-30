@@ -1,4 +1,4 @@
-import type { NavItem } from '../Header';
+import type { NavItem } from '../../../../types/navigation';
 
 import { DesktopNavItem } from './';
 
@@ -7,9 +7,9 @@ interface DesktopNavProps {
 }
 
 const DesktopNav = ({ items }: DesktopNavProps) => (
-  <nav className="hidden h-full space-x-1 lg:flex">
+  <nav className="hidden h-full justify-between lg:flex">
     {items.map((item) => (
-      <DesktopNavItem item={item} />
+      <DesktopNavItem key={item.label} item={item} />
     ))}
   </nav>
 );

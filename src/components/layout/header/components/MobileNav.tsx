@@ -3,7 +3,7 @@ import { AiOutlineClose } from 'react-icons/ai';
 import { RxHamburgerMenu } from 'react-icons/rx';
 import clsx from 'clsx';
 
-import type { NavItem } from '../Header';
+import type { NavItem } from '../../../../types/navigation';
 
 import MobileNavItem from './MobileNavItem';
 

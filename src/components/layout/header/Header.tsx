@@ -1,50 +1,6 @@
+import { navigation } from '../../../constants';
+
 import { ContactInfo, DesktopNav, Logo, MobileNav } from './components';
-
-export interface NavItem {
-  label: string;
-  href: string;
-  subItems?: NavItem[];
-}
-
-const NAVIGATION: NavItem[] = [
-  { label: 'Головна', href: '/' },
-  {
-    label: "Пам'ятники",
-    href: '#',
-    subItems: [
-      { label: "Одинарні пам'ятники", href: '/products/1' },
-      { label: "Двійні пам'ятники", href: '/products/2' },
-      { label: "Трійні пам'ятники", href: '/products/3' },
-      { label: "Пам'ятники для військових", href: '/products/4' },
-      { label: "Дитячі пам'ятники", href: '/products/5' },
-    ],
-  },
-  {
-    label: "Деталі до пам'ятників",
-    href: '/about',
-    subItems: [
-      { label: 'Вази', href: '/products/1' },
-      { label: 'Ломпади', href: '/products/2' },
-      { label: 'Кулі', href: '/products/3' },
-      { label: 'Кути точені гранітні', href: '/products/4' },
-      { label: 'Кути полімерні', href: '/products/5' },
-      { label: 'Крижки', href: '/products/6' },
-    ],
-  },
-  {
-    label: 'Будівельні матеріали',
-    href: '#',
-    subItems: [
-      { label: 'Підвіконня', href: '/services/1' },
-      { label: 'Стільниці', href: '/services/2' },
-      { label: 'Сходи', href: '/services/3' },
-      { label: 'Бруківка', href: '/services/3' },
-      { label: 'Балюстради', href: '/services/3' },
-    ],
-  },
-  { label: 'Каталог каменю', href: '/about' },
-  { label: 'Контакти', href: '/contact' },
-];
 
 export const Header = () => (
   <header className="sticky top-0 z-50 border-b shadow-sm">
@@ -57,8 +13,8 @@ export const Header = () => (
 
     <div className="shadow-top-sm bg-dark-300">
       <div className="container">
-        <DesktopNav items={NAVIGATION} />
-        <MobileNav items={NAVIGATION} />
+        <DesktopNav items={navigation} />
+        <MobileNav items={navigation} />
       </div>
     </div>
   </header>

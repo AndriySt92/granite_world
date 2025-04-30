@@ -1,7 +1,8 @@
 import { MdKeyboardArrowDown } from 'react-icons/md';
+import { Link } from 'react-router-dom';
 import clsx from 'clsx';
 
-import type { NavItem } from '../Header';
+import type { NavItem } from '../../../../types/navigation';
 
 interface MobileNavItemProps {
   item: NavItem;
@@ -12,8 +13,8 @@ interface MobileNavItemProps {
 export const MobileNavItem = ({ item, isActive, toggleSubmenu }: MobileNavItemProps) => (
   <div className="py-1">
     <div className="flex items-center">
-      <a
-        href={item.href}
+      <Link
+        to={item.path}
         className="py-2 text-secondary"
         onClick={(e) => {
           if (item.subItems) {
@@ -23,7 +24,7 @@ export const MobileNavItem = ({ item, isActive, toggleSubmenu }: MobileNavItemPr
         }}
       >
         {item.label}
-      </a>
+      </Link>
       {item.subItems && (
         <button
           onClick={toggleSubmenu}
@@ -47,13 +48,13 @@ export const MobileNavItem = ({ item, isActive, toggleSubmenu }: MobileNavItemPr
         })}
       >
         {item.subItems.map((subItem) => (
-          <a
+          <Link
             key={subItem.label}
-            href={subItem.href}
+            to={subItem.path}
             className="block py-2 pl-4 text-secondary transition-colors hover:text-primary"
           >
             {subItem.label}
-          </a>
+          </Link>
         ))}
       </div>
     )}
