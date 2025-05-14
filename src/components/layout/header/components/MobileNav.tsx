@@ -1,8 +1,8 @@
-import { useState } from 'react';
 import { AiOutlineClose } from 'react-icons/ai';
 import { RxHamburgerMenu } from 'react-icons/rx';
 import clsx from 'clsx';
 
+import useMobileNav from '../../../../hooks/useMobileNav';
 import type { NavItem } from '../../../../types/navigation';
 
 import MobileNavItem from './MobileNavItem';
@@ -12,14 +12,13 @@ interface MobileNavProps {
 }
 
 const MobileNav = ({ items }: MobileNavProps) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [activeSubmenu, setActiveSubmenu] = useState<string | null>(null);
+  const { isOpen, activeSubmenu, toggleMenu, closeMenu, toggleSubmenu } = useMobileNav();
 
   return (
     <>
       <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="relative rounded-md py-3 text-secondary transition-colors lg:hidden"
+        onClick={toggleMenu}
+        className="relative rounded-md py-3 text-light transition-colors lg:hidden"
         aria-label={isOpen ? 'Close menu' : 'Open menu'}
       >
         <div className="relative h-6 w-6">
@@ -47,15 +46,14 @@ const MobileNav = ({ items }: MobileNavProps) => {
           },
         )}
       >
-        <nav className="space-y-2">
+        <nav className="space-y-1">
           {items.map((item) => (
             <MobileNavItem
               key={item.label}
               item={item}
               isActive={activeSubmenu === item.label}
-              toggleSubmenu={() =>
-                setActiveSubmenu(activeSubmenu === item.label ? null : item.label)
-              }
+              toggleSubmenu={() => toggleSubmenu(item.label)}
+              closeMenu={closeMenu}
             />
           ))}
         </nav>
