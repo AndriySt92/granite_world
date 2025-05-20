@@ -7,8 +7,7 @@ interface Props {
 export const NextArrow = ({ onClick }: Props) => {
   return (
     <FaArrowRight
-      size={25}
-      className="absolute !-top-[72px] !right-2 cursor-pointer text-dark transition-colors duration-300 hover:text-primary"
+      className="absolute !-top-[55px] !right-2 cursor-pointer text-xl text-dark transition-colors duration-300 hover:text-primary sm:!-top-[72px] sm:text-2xl"
       onClick={onClick}
     />
   );
@@ -17,8 +16,7 @@ export const NextArrow = ({ onClick }: Props) => {
 export const PrevArrow = ({ onClick }: Props) => {
   return (
     <FaArrowLeft
-      size={25}
-      className="absolute !-top-[72px] !right-14 cursor-pointer text-dark transition-colors duration-300 hover:text-primary"
+      className="absolute !-top-[55px] !right-10 cursor-pointer text-xl text-dark transition-colors duration-300 hover:text-primary sm:!-top-[72px] sm:!right-14 sm:text-2xl"
       onClick={onClick}
     />
   );

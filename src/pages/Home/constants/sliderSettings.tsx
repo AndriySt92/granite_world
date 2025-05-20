@@ -1,21 +1,21 @@
-import { NextArrow, PrevArrow } from '../pages/Home/components/SliderArrows';
+import { NextArrow, PrevArrow } from '../components/SliderArrows';
 
-export const settings = {
+const settings = {
   dots: true,
   autoplay: true,
   infinite: true,
   slidesToShow: 4,
   slidesToScroll: 1,
   appendDots: (dots: React.ReactNode) => (
-    <div className="!mt-10">
-      <ul className="!mt-3 !flex !items-baseline !justify-center !pt-3">{dots}</ul>
+    <div className="">
+      <ul className="!flex !items-baseline !justify-center">{dots}</ul>
     </div>
   ),
   customPaging: () => (
     <div
-      className="!h-3 !w-3 !rounded-full !bg-gray-300 
-                        transition-all duration-300
-                        hover:!bg-primary
+      className="!h-2 !w-2 !rounded-full !bg-gray-300 transition-all duration-300 
+                        hover:!bg-primary sm:!h-3
+                        sm:!w-3
                         [.slick-active_&]:scale-125
                         [.slick-active_&]:!bg-primary"
     />
@@ -24,7 +24,7 @@ export const settings = {
   prevArrow: <PrevArrow />,
   responsive: [
     {
-      breakpoint: 1279,
+      breakpoint: 1023,
       settings: {
         slidesToShow: 2,
       },
@@ -37,3 +37,5 @@ export const settings = {
     },
   ],
 };
+
+export default settings;

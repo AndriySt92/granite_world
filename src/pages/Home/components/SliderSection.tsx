@@ -1,6 +1,7 @@
 import Slider from 'react-slick';
 
-import { settings } from '../../../constants/sliderSettings';
+import { Title } from '../../../components/common';
+import { settings } from '../constants';
 
 import { SliderCard } from '.';
 
@@ -13,16 +14,14 @@ interface SliderSectionProps {
 
 const SliderSection = ({ title, items }: SliderSectionProps) => {
   return (
-    <div className="relative space-y-6 sm:space-y-8 lg:space-y-10">
-      <h2 className="font-main text-3xl font-extrabold uppercase first-letter:text-primary sm:text-4xl">
-        {title}
-      </h2>
+    <div className="spacing-sm relative">
+      <Title>{title}</Title>
       <Slider {...settings}>
         {items.map((item, index) => {
           if (typeof item === 'string') {
             return <SliderCard key={`${item}-${index}`} image={item} />;
           }
-          return <SliderCard key={item.name} name={item.name} image={item.image} />;
+          return <SliderCard key={item.name} title={item.name} image={item.image} />;
         })}
       </Slider>
     </div>
