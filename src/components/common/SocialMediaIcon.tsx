@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+import { cn } from '../../lib';
 
 interface SocialMediaIconProps {
   name: string;
@@ -22,7 +22,7 @@ export const SocialMediaIcon = ({
     target="_blank"
     rel="noopener noreferrer"
     aria-label={`Visit our ${name} page`}
-    className={clsx(
+    className={cn(
       'flex h-12 w-12 items-center justify-center rounded-full bg-white p-3 shadow-lg transition-transform duration-300 hover:scale-110 hover:bg-gray-100',
       color,
       className,

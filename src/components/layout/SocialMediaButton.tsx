@@ -5,6 +5,7 @@ import clsx from 'clsx';
 
 import { socialMediaPlatforms } from '../../constants';
 import { useClickOutside } from '../../hooks';
+import { SocialMediaIcon } from '../common';
 
 const SocialMediaButton = () => {
   const socialRef = useRef<HTMLDivElement>(null);
@@ -15,7 +16,7 @@ const SocialMediaButton = () => {
   };
 
   return (
-    <div className="fixed bottom-16 right-2 z-50 flex flex-col items-end gap-3 sm:bottom-20 sm:right-5">
+    <div className="flex flex-col items-center gap-3">
       {/* Social links */}
       <div
         className={clsx(
@@ -24,18 +25,7 @@ const SocialMediaButton = () => {
         )}
       >
         {socialMediaPlatforms.map(({ name, icon: Icon, link, color }) => (
-          <a
-            key={name}
-            href={link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={clsx(
-              'mb-2 flex items-center justify-center rounded-full bg-white p-3 shadow-lg transition-transform duration-300 hover:scale-110 hover:bg-gray-100',
-              color,
-            )}
-          >
-            <Icon size={26} />
-          </a>
+          <SocialMediaIcon key={name} name={name} link={link} color={color} Icon={Icon} />
         ))}
       </div>
 
