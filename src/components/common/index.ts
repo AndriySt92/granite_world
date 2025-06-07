@@ -1,5 +1,9 @@
+export { default as Button } from './Button';
 export { default as CategoryCard } from './CategoryCard';
+export { default as Error } from './Error';
 export { default as GridContainer } from './GridContainer';
+export { default as Input } from './Input';
+export { default as Modal } from './Modal';
 export { default as PageContainer } from './PageContainer';
 export { default as SocialMediaIcon } from './SocialMediaIcon';
 export { default as Text } from './Text';
