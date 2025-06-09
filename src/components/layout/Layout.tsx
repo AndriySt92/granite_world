@@ -1,9 +1,13 @@
 import { useEffect } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 
+import { useModalState } from '../../hooks';
+
+import CallbackModal from './components/CallbackModal';
 import { Footer, Header, ScrollToTopButton, SocialMediaButton } from './';
 
 const Layout = () => {
+  const { currentModal } = useModalState();
   const { pathname } = useLocation();
 
   useEffect(() => {
@@ -24,6 +28,8 @@ const Layout = () => {
         <ScrollToTopButton />
       </div>
       <Footer />
+
+      {currentModal === 'callback' && <CallbackModal />}
     </div>
   );
 };
