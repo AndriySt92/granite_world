@@ -1,8 +1,16 @@
 import { CgMail, CgPhone } from 'react-icons/cg';
 import { FaLocationDot } from 'react-icons/fa6';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
-import { navigation, products } from '../../constants';
+import {
+  contactInfo,
+  navigation,
+  productsCategoriesList,
+  socialMediaPlatforms,
+} from '../../constants';
+import { SocialMediaIcon, Text, Title } from '../common';
+
+import { FooterContactItem } from './components';
 
 const Footer = () => {
   const handleMapClick = () => {
@@ -14,89 +22,117 @@ const Footer = () => {
       <div className="container w-full py-10 text-white">
         <div className="grid gap-1 gap-y-5 font-main tracking-wider max-lg:grid-cols-2 sm:gap-4 lg:grid-cols-4 lg:gap-10">
           {/* First Block */}
-          <div className="lg:col-span-1">
-            <h4 className="text-xl font-extrabold uppercase first-letter:text-primary">
+          <section className="lg:col-span-1">
+            <Title as="h4" variant="lightWithAccent" uppercase size="xs" className="!text-left">
               Навігація
-            </h4>
+            </Title>
             <nav className="mt-3 flex flex-col gap-2">
               {navigation.map((item) => (
-                <Link
+                <NavLink
                   key={item.label}
                   to={item.path}
                   className="font-semibold text-white transition-colors duration-300 hover:text-primary"
                 >
-                  {item.label}
-                </Link>
+                  <Text as="span" hover="primary" variant="light" size="sm" weight="semibold">
+                    {item.label}
+                  </Text>
+                </NavLink>
               ))}
             </nav>
-          </div>
+          </section>
+
           {/* Third Block */}
-          <div className="lg:order-last lg:col-span-1">
-            <h4 className="text-xl font-extrabold uppercase first-letter:text-primary">Контакти</h4>
+          <section className="lg:order-last lg:col-span-1">
+            <Title as="h4" variant="lightWithAccent" uppercase size="xs" className="!text-left">
+              Контакти
+            </Title>
             <div className="mt-3 space-y-3">
               <div
-                className="flex cursor-pointer gap-1 font-semibold text-white transition-opacity hover:text-primary sm:gap-3"
+                className="group flex cursor-pointer gap-1 transition-colors duration-300 hover:text-primary sm:gap-3"
                 onClick={handleMapClick}
                 role="button"
                 tabIndex={0}
               >
                 <FaLocationDot className="mt-1 h-4 w-4 flex-shrink-0 sm:h-6 sm:w-6" />
-                <div className="flex flex-col">
-                  <span>Івано-Франківська обл.,</span>
-                  <span>м. Городенка,</span>
-                  <span>вул. Шевченка 81</span>
+                <div className="flex flex-col ">
+                  <Text as="span" variant="light" size="sm" weight="semibold" hover="group">
+                    Івано-Франківська обл.,
+                  </Text>
+                  <Text as="span" variant="light" size="sm" weight="semibold" hover="group">
+                    м. Городенка,
+                  </Text>
+                  <Text as="span" variant="light" size="sm" weight="semibold" hover="group">
+                    вул. Шевченка 81
+                  </Text>
                 </div>
               </div>
-
-              <div className="flex gap-1 font-semibold text-white sm:gap-3">
+              <div className="flex gap-1 font-semibold text-white transition-colors duration-300 hover:text-primary sm:gap-3">
                 <CgPhone className="mt-1 h-4 w-4 flex-shrink-0 sm:h-6 sm:w-6" />
                 <div className="flex flex-col">
-                  <a
-                    href="tel:+380961121126"
-                    className="transition-colors duration-300 hover:text-primary"
-                    rel="noopener noreferrer"
-                  >
-                    +38 096 112 112 6
-                  </a>
-                  <a
-                    href="tel:+380671121126"
-                    className="transition-colors duration-300 hover:text-primary"
-                    rel="noopener noreferrer"
-                  >
-                    +38 067 112 112 6
-                  </a>
+                  <FooterContactItem href={`tel:${contactInfo.phones[0]}`}>
+                    <Text as="span" hover="primary" variant="light" size="sm" weight="semibold">
+                      {contactInfo.phones[0]}
+                    </Text>
+                  </FooterContactItem>
+                  <FooterContactItem href={`tel:${contactInfo.phones[1]}`}>
+                    <Text as="span" hover="primary" variant="light" size="sm" weight="semibold">
+                      {contactInfo.phones[1]}
+                    </Text>
+                  </FooterContactItem>
                 </div>
               </div>
-
-              <a
-                href="mailto:graniteworld@gmail.com"
-                className="flex gap-1 font-semibold text-white transition-colors duration-300 hover:text-primary sm:gap-3"
-                rel="noopener noreferrer"
-              >
-                <CgMail className="mt-1 h-4 w-4 flex-shrink-0 sm:h-6 sm:w-6" />
-                <span>granite@gmail.com</span>
-              </a>
-            </div>
-          </div>
-          {/* Second Block */}
-          <div className="max-lg:col-span-2 max-lg:row-start-2 lg:col-span-2">
-            <div className="xl:px-20">
-              <h4 className="text-xl font-extrabold uppercase first-letter:text-primary lg:text-center">
-                Основна продукція
-              </h4>
-              <nav className="mt-3 grid grid-cols-2 gap-2">
-                {products.map((item) => (
-                  <Link
-                    key={item.label}
-                    to={item.path}
-                    className="font-semibold text-white transition-colors duration-300 hover:text-primary"
-                  >
-                    {item.label}
-                  </Link>
+              <FooterContactItem icon={CgMail} href={`mailto:${contactInfo.email}`}>
+                <Text as="span" hover="primary" variant="light" size="sm" weight="semibold">
+                  {contactInfo.email}
+                </Text>
+              </FooterContactItem>
+              <div className="flex gap-4">
+                {socialMediaPlatforms.map(({ name, icon: Icon, link, color }) => (
+                  <SocialMediaIcon
+                    key={name}
+                    name={name}
+                    link={link}
+                    color={color}
+                    Icon={Icon}
+                    size={26}
+                    className="!h-10 !w-10"
+                  />
                 ))}
+              </div>
+            </div>
+          </section>
+          {/* Second Block */}
+          <section className="max-lg:col-span-2 max-lg:row-start-2 lg:col-span-2">
+            <div className="mx-auto max-w-md">
+              <Title as="h4" variant="lightWithAccent" uppercase size="xs" className="text-left">
+                Основна продукція
+              </Title>
+              <nav className="mt-3 grid grid-cols-2 gap-2">
+                <div className="flex flex-col gap-2">
+                  {productsCategoriesList
+                    .slice(0, Math.ceil(productsCategoriesList.length / 2))
+                    .map((item) => (
+                      <NavLink key={item.label} to={item.path}>
+                        <Text as="span" hover="primary" variant="light" size="sm" weight="semibold">
+                          {item.label}
+                        </Text>
+                      </NavLink>
+                    ))}
+                </div>
+                <div className="flex flex-col gap-2">
+                  {productsCategoriesList
+                    .slice(Math.floor(productsCategoriesList.length / 2))
+                    .map((item) => (
+                      <NavLink key={item.label} to={item.path}>
+                        <Text as="span" hover="primary" variant="light" size="sm" weight="semibold">
+                          {item.label}
+                        </Text>
+                      </NavLink>
+                    ))}
+                </div>
               </nav>
             </div>
-          </div>
+          </section>
         </div>
       </div>
     </footer>
