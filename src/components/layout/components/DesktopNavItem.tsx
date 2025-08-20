@@ -24,7 +24,7 @@ const DesktopNavItem = ({ item }: DesktopNavProps) => {
       <NavLink
         to={item.path}
         onClick={closeDropdown}
-        className="align-center flex cursor-pointer bg-dark-100 px-4 py-4 font-main text-sm uppercase text-light transition-colors duration-300 hover:bg-dark-hover hover:text-primary xl:px-6 xl:text-base"
+        className="align-center hover:bg-dark-hover flex cursor-pointer bg-dark-100 px-4 py-4 font-main text-sm uppercase text-light transition-colors duration-300 hover:text-primary xl:px-6 xl:text-base"
       >
         {item.label}
         {item.subItems && (
@@ -48,7 +48,7 @@ const DesktopNavItem = ({ item }: DesktopNavProps) => {
               key={subItem.label}
               to={subItem.path}
               onClick={closeDropdown}
-              className="block border-b border-secondary/10 bg-dark-100 px-4 py-3 text-base text-light transition-colors duration-300 first-letter:capitalize last:border-0 hover:bg-dark-hover hover:text-primary"
+              className="hover:bg-dark-hover block border-b border-secondary/10 bg-dark-100 px-4 py-4 font-main text-lg text-light transition-colors duration-300 first-letter:capitalize last:border-0 hover:text-primary"
             >
               {subItem.label}
             </NavLink>

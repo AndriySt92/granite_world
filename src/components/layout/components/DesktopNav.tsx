@@ -1,4 +1,4 @@
-import type { NavItem } from '../../../../types/navigation';
+import type { NavItem } from '../../../types/navigation';
 
 import { DesktopNavItem } from './';
 
