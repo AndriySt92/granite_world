@@ -2,7 +2,7 @@ import { CgMail, CgPhone } from 'react-icons/cg';
 import { FaLocationDot } from 'react-icons/fa6';
 import { RiCalendarScheduleFill } from 'react-icons/ri';
 
-import { SocialMediaIcon } from '../../components/common';
+import { SocialMediaIcon, Text, Title } from '../../components/common';
 import { contactInfo, socialMediaPlatforms } from '../../constants';
 
 const Contacts = () => {
@@ -13,15 +13,15 @@ const Contacts = () => {
   return (
     <div className="container pt-12 sm:pt-16 lg:pt-20">
       <div className="space-y-6 sm:space-y-8 lg:space-y-10">
-        <h1 className="text-center font-main text-3xl font-extrabold uppercase first-letter:text-primary sm:text-4xl">
+        <Title as="h1" size="lg" align="center">
           Контакти
-        </h1>
+        </Title>
         <div className="flex flex-col gap-8 md:flex-row">
           {/* Left Side - Company Info */}
           <div className="text-dark sm:space-y-6 md:w-1/2">
-            <h2 className="hidden font-main text-xl font-extrabold uppercase first-letter:text-primary sm:text-2xl md:block">
+            <Title as="h3" size="sm" className="hidden md:block">
               Контактна інформація
-            </h2>
+            </Title>
             <div className="font-main text-lg sm:text-xl">
               <div className="mx-auto space-y-6">
                 {/* Address */}
@@ -32,9 +32,9 @@ const Contacts = () => {
                   tabIndex={0}
                 >
                   <FaLocationDot className="h-6 w-6 text-primary" />
-                  <div className="flex max-w-sm flex-col transition-colors duration-300 hover:text-primary">
+                  <Text hover="primary" size="lg" className="flex max-w-sm flex-col">
                     {contactInfo.address}
-                  </div>
+                  </Text>
                 </div>
 
                 {/* Phones */}
@@ -42,12 +42,10 @@ const Contacts = () => {
                   <CgPhone className="h-6 w-6 text-primary" />
                   <div className="flex flex-col gap-1 font-semibold">
                     {contactInfo.phones.map((phone) => (
-                      <a
-                        key={phone}
-                        href={`tel:${phone}`}
-                        className="transition-colors duration-300 hover:text-primary"
-                      >
-                        {phone}
+                      <a key={phone} href={`tel:${phone}`}>
+                        <Text as="span" hover="primary" weight="bold" size="lg">
+                          {phone}
+                        </Text>
                       </a>
                     ))}
                   </div>
@@ -58,20 +56,27 @@ const Contacts = () => {
                   className="flex items-center gap-3 font-semibold transition-colors duration-300 hover:text-primary"
                 >
                   <CgMail className="h-6 w-6 text-primary" />
-                  <span>{contactInfo.email}</span>
+                  <Text as="span" hover="primary" weight="bold" size="lg">
+                    {contactInfo.email}
+                  </Text>
                 </a>
                 {/* Working Hours */}
                 <div className="flex gap-3">
                   <RiCalendarScheduleFill className="h-6 w-6 text-primary" />
                   <div>
-                    <p>
-                      <span className="font-semibold">Графік роботи: </span>
+                    <Text size="lg">
+                      <Text as="span" weight="semibold" size="lg">
+                        Графік роботи:{' '}
+                      </Text>
                       {contactInfo.hours.working}
-                    </p>
-                    <p>
-                      <span className="mt-2 font-semibold">Вихідні: </span>
+                    </Text>
+
+                    <Text size="lg">
+                      <Text as="span" weight="semibold" size="lg">
+                        Вихідні:{' '}
+                      </Text>
                       {contactInfo.hours.daysOff}
-                    </p>
+                    </Text>
                   </div>
                 </div>
                 <div className="flex gap-4 pl-10">
