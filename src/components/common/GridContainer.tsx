@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
-import clsx from 'clsx';
+
+import { cn } from '../../lib';
 
 interface GridContainerProps {
   children: ReactNode;
@@ -18,7 +19,7 @@ const GridContainer = ({
 }: GridContainerProps) => {
   return (
     <div
-      className={clsx(
+      className={cn(
         'grid gap-4',
         `grid-cols-${cols.default}`,
         `sm:grid-cols-${cols.sm}`,

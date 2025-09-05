@@ -1,5 +1,6 @@
 import { cva, type VariantProps } from 'class-variance-authority';
-import clsx from 'clsx';
+
+import { cn } from '../../lib';
 
 const titleVariants = cva('font-main font-extrabold', {
   variants: {
@@ -62,7 +63,7 @@ export const Title = ({
 }: TitleProps) => {
   return (
     <Component
-      className={clsx(titleVariants({ size, variant, uppercase, weight, align }), className)}
+      className={cn(titleVariants({ size, variant, uppercase, weight, align }), className)}
     >
       {children}
     </Component>

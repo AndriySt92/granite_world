@@ -43,7 +43,7 @@ const Modal = ({ children, onClose, title }: Props) => {
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70">
       <div
         className={clsx(
-          'mx-4 w-full max-w-md transform rounded-md bg-white p-4 shadow-lg transition-all duration-300 sm:mx-2 sm:p-6',
+          'mx-4 w-full max-w-md transform space-y-7 rounded-md bg-white p-4 shadow-lg transition-all duration-300 sm:mx-2 sm:p-6',
           isVisible ? 'translate-y-0 opacity-100' : '-translate-y-40 opacity-0',
         )}
       >

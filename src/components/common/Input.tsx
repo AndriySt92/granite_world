@@ -51,7 +51,7 @@ const Input = <T extends FieldValues>({
           id={name}
           type={type}
           className={cn(
-            'w-full rounded-md px-3 shadow-sm placeholder:text-base placeholder:text-secondary-300 focus:outline-none sm:px-4 sm:py-3 sm:text-sm',
+            'w-full rounded-md px-3 py-2 shadow-sm placeholder:text-base placeholder:text-secondary-300 focus:outline-none sm:px-4 sm:py-3 sm:text-sm',
             error
               ? 'border-2 border-error shadow-md focus:ring-0'
               : 'border focus:border-primary focus:ring-primary',
